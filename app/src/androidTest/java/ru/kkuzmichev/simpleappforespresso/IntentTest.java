@@ -46,6 +46,4 @@ public class IntentTest {
         intended(hasData("https://google.com"));
         intended(hasAction(Intent.ACTION_VIEW));
     }
-
-
 }

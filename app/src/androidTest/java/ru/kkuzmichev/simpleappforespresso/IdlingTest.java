@@ -43,14 +43,20 @@ public class IdlingTest {
     }
 
     @Test
-    public void firstTestOpenGallery(){
+    public void TestOpenGallery(){
         ViewInteraction imageButton = onView(isAssignableFrom(AppCompatImageButton.class));
         imageButton.check(matches(isDisplayed()));
         imageButton.perform(click());
         ViewInteraction gallery = onView(withId(R.id.nav_gallery));
         gallery.perform(click());
+
         ViewInteraction itemSeven = onView(allOf(withId(R.id.item_number),withText("7")));
         itemSeven.check(matches(withText("7")));
+        ViewInteraction recyclerView = onView(withId(R.id.recycle_view));
+        recyclerView.check(matches(isDisplayed()));
+
+        recyclerView.check(CustomViewAssertions.isRecyclerView());
+        recyclerView.check(matches(CustomViewMatcher.recyclerViewSizeMatcher(10)));
     }
 
 }
